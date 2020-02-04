@@ -1,0 +1,21 @@
+server:
+  port : 8090
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: 7045a59b0f0c7a9dac46
+            clientSecret: 583daf81b2a22782bc9172d7a5a392e2d70a6f62
+#            access-token-uri: https://github.com/login/oauth/access_token
+#            user-authorization-uri: https://github.com/login/oauth/authorize
+#            client-authentication-scheme: form
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+        web:
+          FilterChainProxy: DEBUG
