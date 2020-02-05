@@ -5,6 +5,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 
 @Configuration
@@ -14,13 +15,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http/*.csrf().disable()*/
+        http
                 .antMatcher("/**").authorizeRequests()
                 .antMatchers("/", "/login/**", "/error/**","/np/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .oauth2Login();
-        http.authorizeRequests().and().logout().logoutUrl("/logout").logoutSuccessUrl("/");
+                .oauth2Login().and().logout().logoutUrl("/logout").logoutSuccessUrl("/")
+                .and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
     }
 
 }

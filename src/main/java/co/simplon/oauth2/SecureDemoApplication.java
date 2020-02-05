@@ -20,6 +20,6 @@ public class SecureDemoApplication {
 
 	@GetMapping("/user")
 	public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
-		return principal.getAttribute("name");
+		return principal.getAttributes();
 	}
 }
