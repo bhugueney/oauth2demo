@@ -1,15 +1,22 @@
 server:
   port : 8090
+security:
+  oauth2:
+    client:
+      grant-type: client_credentials
 spring:
   security:
     oauth2:
+      resource:
       client:
         registration:
           github:
             clientId: 7045a59b0f0c7a9dac46
             clientSecret: 583daf81b2a22782bc9172d7a5a392e2d70a6f62
-#            access-token-uri: https://github.com/login/oauth/access_token
-#            user-authorization-uri: https://github.com/login/oauth/authorize
+            grant-type: client_credentials
+            access-token-uri: https://github.com/login/oauth/access_token
+            user-authorization-uri: https://github.com/login/oauth/authorize
+            user-info-uri: https://api.github.com/user
 #            client-authentication-scheme: form
 
 logging:
